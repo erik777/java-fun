@@ -7,3 +7,4 @@ Here is a guide for adding Weld and using Observes:
 [Introduction to the Event Notification Model in CDI 2.0](https://www.baeldung.com/cdi-event-notification)
 
 Run the net.openstandards.server.Server to launch.
+
