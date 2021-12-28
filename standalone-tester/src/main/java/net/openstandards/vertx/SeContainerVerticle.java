@@ -7,6 +7,8 @@ import javax.enterprise.inject.se.SeContainerInitializer;
 import javax.inject.Inject;
 
 import org.jboss.weld.environment.se.events.ContainerInitialized;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
@@ -15,6 +17,8 @@ import net.openstandards.event.TextService;
 import net.openstandards.server.StartupEvent;
 
 public class SeContainerVerticle extends AbstractVerticle {
+  private static final Logger log = LoggerFactory.getLogger(SeContainerVerticle.class);
+  
   @Inject
   Event<TestEvent> event;
 
@@ -26,7 +30,7 @@ public class SeContainerVerticle extends AbstractVerticle {
 
   @Override
   public void start(Promise<Void> future) {
-    System.out.println("Welcome to SeContainer!");
+    log.info("Welcome to SeContainer!");
 
     containerInitializer = SeContainerInitializer.newInstance();
     SeContainer container = containerInitializer.initialize();
@@ -35,7 +39,7 @@ public class SeContainerVerticle extends AbstractVerticle {
     container.getBeanManager().fireEvent(new TestEvent("Welcome to SeContainerVerticle!"));
 //      }
 
-    System.out.println("Fired event in SeContainerVerticle::start");
+    log.info("Fired event in SeContainerVerticle::start");
   }
 
   @Override

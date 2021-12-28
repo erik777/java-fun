@@ -2,14 +2,19 @@ package net.openstandards.event;
 
 import javax.inject.Singleton;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class TestEvent {
+  private static final Logger log = LoggerFactory.getLogger(TestEvent.class);
+  
   private String message;
   
   public TestEvent() {}
   
   public TestEvent(String message) {
     this.message = message;
-    System.out.println("Constructed TestEvent " + this.message);
+    log.info("Constructed TestEvent " + this.message);
   }
 
   public String getMessage() {
